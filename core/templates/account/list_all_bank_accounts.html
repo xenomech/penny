@@ -1,0 +1,11 @@
+{% extends "partials/layouts/base.html" %}
+
+{% block title %} Create or Update Bank Account {% endblock %}
+
+{% block content %}
+
+{% for bank_account in bank_accounts %}
+  <p>{{ bank_account.name }} - {{ bank_account.provider }} - {{ bank_account.balance }}</p>
+{% endfor %}
+
+{% endblock %}

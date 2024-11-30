@@ -3,20 +3,20 @@ from django.http import HttpRequest, HttpResponse
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
-from .models import Transaction
+from ..models import Transaction
 
 
 # Create
-# class CreateTransactionView(LoginRequiredMixin, CreateView):
-#     login_url = "login"
-#     model = Transaction
-#     fields = ["title", "description"]
-#     template_name = "forms/create_transaction_form.html"
-#     success_url = reverse_lazy("core:list_all_transactions")
+class CreateTransactionView(LoginRequiredMixin, CreateView):
+    login_url = "login"
+    model = Transaction
+    template_name = "transaction/create_or_update_transaction.html"
+    fields = ["title", "description", "amount", "date", "transaction_type"]
+    success_url = reverse_lazy("core:list_all_transactions")
 
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 # Read

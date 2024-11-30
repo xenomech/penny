@@ -1,0 +1,12 @@
+{% extends "partials/layouts/base.html" %}
+
+{% block title %} Create or Update Transaction {% endblock %}
+
+{% block content %}
+
+<form action="{% url 'core:create_or_update_transaction' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Save</button>
+</form>
+{% endblock %}

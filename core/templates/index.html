@@ -1,9 +1,18 @@
-{% extends "layouts/base.html" %} 
+{% extends "partials/layouts/base.html" %} 
 
 {% block title %} Transaction List {% endblock %} 
 
 {% block content %}
-<main class="p-4">
-  <h1 class="text-2xl">Transaction List</h1>
-</main>
+<section class="section">
+  <div class="container">
+    <h1 class="title">
+      Transaction List
+    </h1>
+    <a href="{% url 'core:create_or_update_transaction' %}" class="button">Create Transaction</a>
+    <p class="subtitle">
+      My first website with <strong>Bulma</strong>!
+    </p>
+  </div>
+  {% include "partials/transaction_table.html" with transactions=transactions %}
+</section>
 {% endblock %}

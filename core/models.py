@@ -19,7 +19,11 @@ class Profile(BaseModel):
 
 
 class BankAccount(BaseModel):
-    balance = models.DecimalField(max_digits=10, decimal_places=2)
+    name = models.CharField(
+        max_length=100, null=False, blank=False, default="Untitled Bank Account"
+    )
+    provider = models.CharField(max_length=100, null=False, blank=False)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
         return (
@@ -51,7 +55,7 @@ class Transaction(BaseModel):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField()
     transaction_type = models.CharField(
         max_length=10,
         choices=TRANSACTION_TYPE_CHOICES,

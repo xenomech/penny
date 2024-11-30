@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 widget_attrs = {
     "class": "form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -16,6 +16,7 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={**widget_attrs, "placeholder": "Password"})
     )
+
 
 
 class RegistrationForm(UserCreationForm):
@@ -36,5 +37,5 @@ class RegistrationForm(UserCreationForm):
     )
 
     class Meta:
-        model = User
-        fields = ("username", "email", "password1", "password2")
+        model = get_user_model()
+        fields = ["username", "email", "password1", "password2"]

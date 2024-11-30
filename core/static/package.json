@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tailwindcss build -i css/globals.css -o css/styles.css",
-    "watch": "tailwindcss -i css/globals.css -o css/styles.css --watch"
+    "watch": "tailwindcss -i css/globals.css -o css/styles.css --watch",
+    "build": "tailwindcss -i css/globals.css -o css/styles.css"
   },
   "keywords": [],
   "author": "xenomech",
   "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.4.6"
+  "dependencies": {
+    "tailwindcss": "^3.4.15"
   }
 }

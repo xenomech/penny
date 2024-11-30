@@ -1,0 +1,21 @@
+{% extends "partials/layouts/base.html" %}
+
+{% block title %} Create or Update Bank Account {% endblock %}
+
+{% block content %}
+
+<form action="{% url 'core:create_or_update_bank_account' %}" method="post">
+  {% csrf_token %}
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name">
+  <label for="balance">Balance</label>
+  <input type="number" name="balance" id="balance">
+  <label for="provider">Provider</label>
+  <select name="provider" id="provider">
+    {% for provider in providers %}
+      <option value="{{ provider.code }}">{{ provider.name }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Save</button>
+</form>
+{% endblock %}
