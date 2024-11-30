@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "base",
     "core",
     "auth",
+    "webpack_loader",
 ]
 
 MIDDLEWARE = [
@@ -124,12 +125,28 @@ LOGOUT_REDIRECT_URL = "login"
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
+
 STATIC_FILES_DIRS = [
     os.path.join(BASE_DIR, "core/static"),
 ]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
 # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+WEBPACK_LOADER = {
+    "DEFAULT": {
+        "BUNDLE_DIR_NAME": "",
+        "CACHE": not DEBUG,
+        "STATS_FILE": os.path.join(BASE_DIR, "core/static/", "webpack-stats.json"),
+        "POLL_INTERVAL": 0.1,
+        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
+    }
+}
+

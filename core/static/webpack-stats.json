@@ -1,0 +1,22 @@
+{
+  "status": "done",
+  "assets": {
+    "css/main-549805f7a52216734e14.css": {
+      "name": "css/main-549805f7a52216734e14.css",
+      "path": "/Users/xenomech/Devel/penny/core/static/css/main-549805f7a52216734e14.css",
+      "publicPath": "auto"
+    },
+    "js/main-c6040a95823c27be8d58.js": {
+      "name": "js/main-c6040a95823c27be8d58.js",
+      "path": "/Users/xenomech/Devel/penny/core/static/js/main-c6040a95823c27be8d58.js",
+      "publicPath": "auto"
+    }
+  },
+  "chunks": {
+    "main": [
+      "css/main-549805f7a52216734e14.css",
+      "js/main-c6040a95823c27be8d58.js"
+    ]
+  },
+  "publicPath": "auto"
+}
