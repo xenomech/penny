@@ -1,0 +1,19 @@
+{% extends "partials/layouts/base.html" %}
+
+{% block title %} Card List {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="title">Card List</h1>
+    <a href="{% url 'core:card_new' %}" class="button">Create Card</a>
+    <div class="table-container">
+        {% for card in cards %}
+            <div class="card">
+                <div class="card-content">
+                    <p>{{ card.card_number_ends_with }} {{ card.bank_account.name }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

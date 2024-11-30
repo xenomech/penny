@@ -26,9 +26,7 @@ class BankAccount(BaseModel):
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
-        return (
-            self.user.first_name + " " + self.user.last_name + " " + str(self.balance)
-        )
+        return f"{self.name} - {self.balance}"
 
 
 class Card(BaseModel):
@@ -36,13 +34,7 @@ class Card(BaseModel):
     bank_account = models.ForeignKey(BankAccount, on_delete=models.CASCADE)
 
     def __str__(self):
-        return (
-            self.user.first_name
-            + " "
-            + self.user.last_name
-            + " "
-            + self.card_number_ends_with
-        )
+        return f"{self.card_number_ends_with} - {self.bank_account.name}"
 
 
 class Transaction(BaseModel):

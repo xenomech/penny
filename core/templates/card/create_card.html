@@ -1,0 +1,12 @@
+{% extends "partials/layouts/base.html" %}
+
+{% block title %} Create Card {% endblock %}
+
+{% block content %}
+
+<form action="{% url 'core:card_new' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
