@@ -10,7 +10,7 @@ from core.models import Profile
 class RegistrationView(FormView):
     form_class = RegistrationForm
     template_name = "auth/register.html"
-    success_url = reverse_lazy("core:list_all_transactions")
+    success_url = reverse_lazy("core:home_index")
 
     def form_valid(self, form):
         user = form.save()
@@ -21,5 +21,5 @@ class RegistrationView(FormView):
 
 class LoginView(LoginView):
     authentication_form = LoginForm
-    success_url = reverse_lazy("core:list_all_transactions")
+    success_url = reverse_lazy("core:home_index")
     template_name = "auth/login.html"

@@ -9,7 +9,7 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
     login_url = "login"
     model = Transaction
     template_name = "transaction/create_transaction.html"
-    fields = ["title", "description", "amount", "date", "transaction_type"]
+    fields = ["title", "description", "amount", "date", "transaction_type", "from_account", "from_card"]
     success_url = reverse_lazy("core:transaction_index")
 
     def form_valid(self, form):

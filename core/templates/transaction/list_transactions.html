@@ -1,0 +1,14 @@
+{% extends "partials/layouts/base.html" %}
+
+{% block title %} Transactions {% endblock %}
+
+{% block content %}
+
+<h1>Transactions</h1>
+{% for transaction in transactions %}
+<p>
+    <a href="{% url 'core:transaction_show' transaction.id %}">{{ transaction.title }}</a>
+    {{ transaction.amount }}
+</p>
+{% endfor %}
+{% endblock %}
