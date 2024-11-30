@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from base.models import BaseModel
 from core.constants.currencies import CURRENCY_CHOICES
+from core.constants.themes import THEME_CHOICES, THEME_LIGHT
 # Create your models here.
 
 
@@ -73,14 +74,9 @@ class Transaction(BaseModel):
         return self.user.first_name + " " + self.user.last_name + " " + str(self.amount)
 
 class Settings(BaseModel):
-    THEME_LIGHT = "LIGHT"
-    THEME_DARK = "DARK"
-    THEME_CHOICES = [
-        (THEME_LIGHT, "Light"),
-        (THEME_DARK, "Dark"),
-    ]
+  
     theme = models.CharField(max_length=10, choices=THEME_CHOICES, default=THEME_LIGHT)
     preferred_currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default="USD")
     
     def __str__(self):
-        return self.theme + " - " + self.preferred_currency
+        return f"{self.user.username}'s Settings"

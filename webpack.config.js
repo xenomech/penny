@@ -31,6 +31,7 @@ module.exports = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
+        include: path.resolve(__dirname, "frontend/scss"),
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
@@ -44,7 +45,11 @@ module.exports = {
             loader: "postcss-loader",
             options: {
               postcssOptions: {
-                plugins: ["postcss-preset-env"],
+                plugins: [
+                  "postcss-preset-env",
+                  require("tailwindcss")("./tailwind.config.js"),
+                  require("autoprefixer"),
+                ],
               },
             },
           },

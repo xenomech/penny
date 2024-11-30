@@ -4,12 +4,20 @@
 
 {% block content %}
   <h1 id="switch-theme">Home</h1>
-  <a href="{% url 'core:transaction_new' %}"><button class="btn btn-default btn-size-default">New Transaction</button></a>
-  <a href="{% url 'core:account_new' %}"><button class="btn btn-default btn-size-default">New Account</button></a>
-  <a href="{% url 'core:card_new' %}"><button class="btn btn-default btn-size-default">New Card</button></a>
+  <a href="{% url 'core:transaction_new' %}"><button class="button button-default button-size-default">New Transaction</button></a>
+  <a href="{% url 'core:account_new' %}"><button class="button button-default button-size-default">New Account</button></a>
+  <a href="{% url 'core:card_new' %}"><button class="button button-default button-size-default">New Card</button></a>
+  <a href="{% url 'core:settings_edit' %}"><button class="button button-default button-size-default">Settings</button></a>
 
-<p id="typewriter" style="display: none;">Total balance: {{ total_balance }}</p>
-<h2>Recent transactions</h2>
+  <button class="btn">Button</button>
+  <button class="btn btn-neutral">Neutral</button>
+  <button class="btn btn-primary">Primary</button>
+  <button class="btn btn-secondary">Secondary</button>
+  <button class="btn btn-accent">Accent</button>
+  <button class="btn btn-ghost">Ghost</button>
+  <button class="btn btn-link">Link</button>
+  <p id="typewriter" style="display: none;">Total balance: {{ total_balance }}</p>
+  <h2>Recent transactions</h2>
 <ul>
   {% for transaction in transactions %}
     <li>{{ transaction.date }} - {{ transaction.amount }} - {{ transaction.description }}</li>
