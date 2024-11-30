@@ -43,6 +43,12 @@ class UpdateCardView(LoginRequiredMixin, UpdateView):
     fields = ["name", "number", "expiration_date", "cvv", "bank_account"]
     success_url = reverse_lazy("core:card_index")
 
+    def get_form_class(self):
+        form_class = super().get_form_class()
+        for field in form_class.base_fields.values():
+            field.widget.attrs.update({'class': 'form-control'})
+        return form_class
+
 
 class DeleteCardView(LoginRequiredMixin, DeleteView):
     login_url = "login"

@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./frontend/styles/globals.scss":
-/*!**************************************!*\
-  !*** ./frontend/styles/globals.scss ***!
-  \**************************************/
+/***/ "./frontend/scss/globals.scss":
+/*!************************************!*\
+  !*** ./frontend/scss/globals.scss ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://penny/./frontend/styles/globals.scss?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://penny/./frontend/scss/globals.scss?");
 
 /***/ }),
 
@@ -46,7 +46,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _helpers_idSelector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/idSelector */ \"./frontend/scripts/helpers/idSelector.ts\");\n/* harmony import */ var _animations_typewriter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./animations/typewriter */ \"./frontend/scripts/animations/typewriter.ts\");\n/* harmony import */ var _styles_globals_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/globals.scss */ \"./frontend/styles/globals.scss\");\n\n\n\nwindow.addEventListener(\"load\", function () {\n    var helloElement = (0,_helpers_idSelector__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\"typewriter\");\n    if (helloElement) {\n        var text = helloElement.textContent;\n        helloElement.style.display = \"block\";\n        helloElement.innerHTML = \"\";\n        (0,_animations_typewriter__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(helloElement, text, 10);\n    }\n});\n\n\n//# sourceURL=webpack://penny/./frontend/scripts/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _helpers_idSelector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/idSelector */ \"./frontend/scripts/helpers/idSelector.ts\");\n/* harmony import */ var _animations_typewriter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./animations/typewriter */ \"./frontend/scripts/animations/typewriter.ts\");\n/* harmony import */ var _scss_globals_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../scss/globals.scss */ \"./frontend/scss/globals.scss\");\n\n\n\nwindow.addEventListener(\"load\", function () {\n    var helloElement = (0,_helpers_idSelector__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\"typewriter\");\n    if (helloElement) {\n        var text = helloElement.textContent;\n        helloElement.style.display = \"block\";\n        helloElement.innerHTML = \"\";\n        (0,_animations_typewriter__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(helloElement, text, 10);\n    }\n    var switchThemeElement = (0,_helpers_idSelector__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\"switch-theme\");\n    if (switchThemeElement) {\n        switchThemeElement.addEventListener(\"click\", function () {\n            document.documentElement.classList.toggle(\"dark\");\n        });\n    }\n});\n\n\n//# sourceURL=webpack://penny/./frontend/scripts/index.ts?");
 
 /***/ })
 

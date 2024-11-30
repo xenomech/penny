@@ -29,7 +29,7 @@ class ListAllBankAccountsView(LoginRequiredMixin, ListView):
     model = BankAccount
     template_name = "account/list_bank_accounts.html"
     context_object_name = "bank_accounts"
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         

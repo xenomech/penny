@@ -4,8 +4,6 @@ from django.contrib.auth.views import LoginView
 from django.views.generic.edit import FormView
 from django.contrib.auth import login
 from django.shortcuts import redirect
-from core.models import Profile
-
 
 class RegistrationView(FormView):
     form_class = RegistrationForm
@@ -14,7 +12,6 @@ class RegistrationView(FormView):
 
     def form_valid(self, form):
         user = form.save()
-        Profile.objects.create(user=user)
         login(self.request, user)
         return redirect(self.success_url)
 
@@ -23,3 +20,8 @@ class LoginView(LoginView):
     authentication_form = LoginForm
     success_url = reverse_lazy("core:home_index")
     template_name = "auth/login.html"
+    
+    def form_valid(self, form):
+        user = form.get_user()
+        login(self.request, user)
+        return redirect(self.success_url)

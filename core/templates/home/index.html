@@ -3,10 +3,10 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  <h1>Home</h1>
-  <a href="{% url 'core:transaction_new' %}"><button class="btn">New Transaction</button></a>
-<a href="{% url 'core:account_new' %}"><button class="btn">New Account</button></a>
-<a href="{% url 'core:card_new' %}"><button class="btn">New Card</button></a>
+  <h1 id="switch-theme">Home</h1>
+  <a href="{% url 'core:transaction_new' %}"><button class="btn btn-default btn-size-default">New Transaction</button></a>
+  <a href="{% url 'core:account_new' %}"><button class="btn btn-default btn-size-default">New Account</button></a>
+  <a href="{% url 'core:card_new' %}"><button class="btn btn-default btn-size-default">New Card</button></a>
 
 <p id="typewriter" style="display: none;">Total balance: {{ total_balance }}</p>
 <h2>Recent transactions</h2>
@@ -16,7 +16,7 @@
   {% endfor %}
 </ul>
 
-<h2>Accounts</h2>
+<h2 class="py-10">Accounts</h2>
 <ul>
   {% for account in accounts %}
     <li>{{ account.name }} - {{ account.balance }}</li>

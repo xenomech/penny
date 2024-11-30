@@ -4,9 +4,9 @@
 
 {% block content %}
 
-<form action="{% url 'core:transaction_new' %}" method="post">
+<form class="form" action="{% url 'core:transaction_new' %}" method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Save</button>
+  <button class="button button-default button-size-default" type="submit">Save</button>
 </form>
 {% endblock %}

@@ -11,6 +11,10 @@
     {% render_bundle 'main' 'js' %}
   </head>
   <body class="max-w-screen-lg mx-auto">
+  <form action="{% url 'logout' %}" method='post'> 
+  {% csrf_token %}
+    <button> logout </button>
+  </form>
     {% block content %}{% endblock %}
   </body>
 </html>
