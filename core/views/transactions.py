@@ -9,7 +9,8 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
     login_url = "login"
     model = Transaction
     template_name = "transaction/create_transaction.html"
-    fields = ["title", "description", "amount", "date", "transaction_type", "from_account", "from_card"]
+    fields = ["title", "description", "amount", "date", "transaction_type", "from_account"]
+    optional_fields = ["from_card"]
     success_url = reverse_lazy("core:transaction_index")
 
     def get_form_class(self):
@@ -17,6 +18,7 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
         for field in form_class.base_fields.values():
             field.widget.attrs.update({'class': 'form-control'})
         return form_class
+    
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)

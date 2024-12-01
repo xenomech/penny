@@ -1,12 +1,43 @@
 {% extends "partials/layouts/base.html" %}
-
+{% load widget_tweaks %}
 {% block title %} Create Transaction {% endblock %}
 
 {% block content %}
 
-<form class="form" action="{% url 'core:transaction_new' %}" method="post">
+<form class="max-w-xl mx-auto" action="{% url 'core:transaction_new' %}" method="post">
   {% csrf_token %}
-  {{ form.as_p }}
-  <button class="button button-default button-size-default" type="submit">Save</button>
+  <div class="space-y-4">
+    <label class="label" for="title">
+      <span class="label-text">Title</span>
+      {{ form.title|add_class:"input input-bordered w-full" }}
+    </label>
+    <label class="label" for="amount">
+      <span class="label-text">Amount</span>
+      {{ form.amount|add_class:"input input-bordered w-full" }}
+    </label>
+    <label class="label" for="date">
+      <span class="label-text">Date</span>
+      {{ form.date|add_class:"input input-bordered w-full" }}
+    </label>
+    <label class="label" for="description">
+      <span class="label-text">Description</span>
+      {{ form.description|add_class:"input input-bordered w-full" }}
+    </label>
+    <label class="label" for="transaction_type">
+      <span class="label-text">Transaction Type</span>
+      {{ form.transaction_type|add_class:"input input-bordered w-full" }}
+    </label>
+    <label class="label" for="from_account">
+      <span class="label-text">From Account</span>
+      {{ form.from_account|add_class:"input input-bordered w-full" }}
+    </label>
+    {% if form.from_card %}
+    <label class="label" for="from_card">
+      <span class="label-text">From Card</span>
+      {{ form.from_card|add_class:"input input-bordered w-full" }}
+    </label>
+    {% endif %}
+  </div>
+  <button class="btn btn-primary" type="submit">Save</button>
 </form>
 {% endblock %}

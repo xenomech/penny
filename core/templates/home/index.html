@@ -3,31 +3,47 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  <h1 id="switch-theme">Home</h1>
-  <a href="{% url 'core:transaction_new' %}"><button class="button button-default button-size-default">New Transaction</button></a>
-  <a href="{% url 'core:account_new' %}"><button class="button button-default button-size-default">New Account</button></a>
-  <a href="{% url 'core:card_new' %}"><button class="button button-default button-size-default">New Card</button></a>
-  <a href="{% url 'core:settings_edit' %}"><button class="button button-default button-size-default">Settings</button></a>
+  <div class="button-group">
+    <a href="{% url 'core:transaction_new' %}" class="btn btn-ghost">New Transaction</a>
+    <a href="{% url 'core:account_new' %}" class="btn btn-ghost">New Account</a>
+    <a href="{% url 'core:card_new' %}" class="btn btn-ghost">New Card</a>
+    <a href="{% url 'core:settings_edit' %}" class="btn btn-ghost">Settings</a>
+  </div>
 
-  <button class="btn">Button</button>
-  <button class="btn btn-neutral">Neutral</button>
-  <button class="btn btn-primary">Primary</button>
-  <button class="btn btn-secondary">Secondary</button>
-  <button class="btn btn-accent">Accent</button>
-  <button class="btn btn-ghost">Ghost</button>
-  <button class="btn btn-link">Link</button>
-  <p id="typewriter" style="display: none;">Total balance: {{ total_balance }}</p>
-  <h2>Recent transactions</h2>
-<ul>
-  {% for transaction in transactions %}
-    <li>{{ transaction.date }} - {{ transaction.amount }} - {{ transaction.description }}</li>
-  {% endfor %}
-</ul>
+  <p id="typewriter" class="hidden">Total balance: {{ total_balance }}</p>
+  <h2>Recent Transactions</h2>
+  <table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for transaction in transactions %}
+        <tr class="hover cursor-pointer" onclick="window.location='{% url 'core:transaction_show' transaction.id %}'">
+          <td>{{ transaction.title }}</td>
+          <td class='{% if transaction.transaction_type == "EXPENSE" %}text-red-500{% else %}text-green-500{% endif %}'>
+            {% if transaction.transaction_type == "EXPENSE" %}
+              -
+            {% else %}
+              +
+            {% endif %}
+            {{ transaction.amount }}
+          </td>
+          <td>{{ transaction.date }}</td>
+          <td>{{ transaction.transaction_type|title }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
-<h2 class="py-10">Accounts</h2>
-<ul>
-  {% for account in accounts %}
-    <li>{{ account.name }} - {{ account.balance }}</li>
-  {% endfor %}
-</ul>
+  <h2 class="py-10">Accounts</h2>
+  <ul>
+    {% for account in accounts %}
+      <li>{{ account.name }} - {{ account.balance }}</li>
+    {% endfor %}
+  </ul>
 {% endblock %}

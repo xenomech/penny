@@ -1,0 +1,12 @@
+{% if request.resolver_match.url_name == 'home_index' %}
+  <a href="{% url 'core:transaction_new' %}" class="btn btn-primary btn-sm">+ Add Transaction</a>
+{% endif %}
+{% if request.resolver_match.url_name == 'transaction_index' %}
+  <a href="{% url 'core:transaction_new' %}" class="btn btn-primary btn-sm">+ Add Transaction</a>
+{% endif %}
+{% if request.resolver_match.url_name == 'account_index' %}
+  <a href="{% url 'core:account_new' %}" class="btn btn-primary btn-sm">+ Add Account</a>
+{% endif %}
+{% if request.resolver_match.url_name == 'card_index' %}
+  <a href="{% url 'core:card_new' %}" class="btn btn-primary btn-sm">+ Add Card</a>
+{% endif %}

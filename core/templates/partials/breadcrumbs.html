@@ -1,0 +1,20 @@
+{% comment %} 
+<br>
+<div class="breadcrumbs text-sm">
+    <ul>
+      <li><a href="{% url 'core:home_index' %}">Home</a></li>
+      {% if request.resolver_match.url_name != 'home_index' %}
+        {% with request.path|split:'/' as parts %}
+          {% for part in parts %}
+            <li>
+              {% if forloop.last %}
+                {{ part|capfirst }}
+              {% else %}
+                <a href="/{{ parts|slice:':forloop.counter'|join:'/' }}/">{{ part|capfirst }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        {% endwith %}
+      {% endif %}
+    </ul>
+</div> {% endcomment %}

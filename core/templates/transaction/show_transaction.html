@@ -4,19 +4,24 @@
 
 {% block content %}
 
-<h1>{{ transaction.title }}</h1>
-<p>{{ transaction.amount }}</p>
-<p>{{ transaction.date }}</p>
-<p>{{ transaction.description }}</p>
-<p>{{ transaction.transaction_type }}</p>
-<p>{{ transaction.from_account }}</p>
-<p>{{ transaction.from_card }}</p>
-
-<a href="{% url 'core:transaction_edit' transaction.id %}">Edit</a>
-<form action="{% url 'core:transaction_destroy' transaction.id %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Delete</button>
-</form>
+<div class="card w-full bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title">{{ transaction.title }}</h2>
+    <p><strong>Amount:</strong> {{ transaction.amount }}</p>
+    <p><strong>Date:</strong> {{ transaction.date }}</p>
+    <p><strong>Description:</strong> {{ transaction.description }}</p>
+    <p><strong>Transaction Type:</strong> {{ transaction.transaction_type }}</p>
+    <p><strong>From Account:</strong> {{ transaction.from_account }}</p>
+    <p><strong>From Card:</strong> {{ transaction.from_card }}</p>
+    <div class="card-actions justify-end">
+      <a class="btn btn-primary" href="{% url 'core:transaction_edit' transaction.id %}">Edit</a>
+      <form action="{% url 'core:transaction_destroy' transaction.id %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-error" type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
 
 
 {% endblock %}

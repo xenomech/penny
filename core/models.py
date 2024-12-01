@@ -3,8 +3,6 @@ from django.contrib.auth.models import AbstractUser
 from base.models import BaseModel
 from core.constants.currencies import CURRENCY_CHOICES
 from core.constants.themes import THEME_CHOICES, THEME_LIGHT
-# Create your models here.
-
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
@@ -13,6 +11,7 @@ class User(AbstractUser):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         Profile.objects.get_or_create(user=self)
+
 
 class Profile(BaseModel):
     bio = models.TextField(blank=True)
@@ -25,7 +24,7 @@ class Profile(BaseModel):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.user.username}'s Profile"
+        return self.user.username
 
 
 class BankAccount(BaseModel):
@@ -71,7 +70,8 @@ class Transaction(BaseModel):
     )
 
     def __str__(self):
-        return self.user.first_name + " " + self.user.last_name + " " + str(self.amount)
+        operator = "+" if self.transaction_type == self.TRANSACTION_TYPE_INCOME else "-"
+        return f"{self.title} : {operator} {self.amount}"
 
 class Settings(BaseModel):
   
@@ -79,4 +79,4 @@ class Settings(BaseModel):
     preferred_currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default="USD")
     
     def __str__(self):
-        return f"{self.user.username}'s Settings"
+        return f"{self.user.username} - Settings"

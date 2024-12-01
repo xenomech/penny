@@ -5,10 +5,37 @@
 {% block content %}
 
 <h1>Transactions</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
 {% for transaction in transactions %}
-<p>
-    <a href="{% url 'core:transaction_show' transaction.id %}">{{ transaction.title }}</a>
-    {{ transaction.amount }}
-</p>
+  <tr class="hover cursor-pointer" onclick="window.location='{% url 'core:transaction_show' transaction.id %}'">
+    <td>
+        {{ transaction.title }}
+    </td>
+    <td class='{% if transaction.transaction_type == "EXPENSE" %}text-red-500{% else %}text-green-500{% endif %}'>
+        {% if transaction.transaction_type == "EXPENSE" %}
+            -
+        {% else %}
+            +
+        {% endif %}
+        {{ transaction.amount }}
+    </td>
+    <td>
+        {{ transaction.date }}
+    </td>
+    <td>
+        {{ transaction.transaction_type|title }}
+    </td>
+  </tr>
 {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

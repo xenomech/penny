@@ -1,19 +1,31 @@
-{% extends "partials/layouts/base.html" %}
+{% extends "partials/layouts/base.html" %} 
 
 {% block content %}
-    <h1>User Preferences</h1>
-    <form class="flex items-start gap-2 flex-col justify-start" action="{% url 'core:settings_edit' %}" method="post">
-        {% csrf_token %}
-        <label for="theme">Theme</label>
-        <select name="theme" id="theme" onchange="this.form.submit()">
-            <option value="light" {% if request.COOKIES.theme == "light" %}selected{% endif %}>Light</option>
-            <option value="dark" {% if request.COOKIES.theme == "dark" %}selected{% endif %}>Dark</option>
-            <option value="cupcake" {% if request.COOKIES.theme == "cupcake" %}selected{% endif %}>Cupcake</option>
-            <option value="emerald" {% if request.COOKIES.theme == "emerald" %}selected{% endif %}>Emerald</option>
-            <option value="autumn" {% if request.COOKIES.theme == "autumn" %}selected{% endif %}>Autumn</option>
-            <option value="forest" {% if request.COOKIES.theme == "forest" %}selected{% endif %}>Forest</option>
-            <option value="retro" {% if request.COOKIES.theme == "retro" %}selected{% endif %}>Retro</option>
-        </select>
-          
-    </form>
+  <h1>User Preferences</h1>
+  <form class="flex items-start gap-2 flex-col justify-start" action="{% url 'core:settings_edit' %}" method="post">
+    {% csrf_token %}
+    <div class="dropdown mb-72">
+      <div tabindex="0" role="button" class="btn m-1">
+        Theme
+        <svg width="12px" height="12px" class="inline-block h-2 w-2 fill-current opacity-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+          <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+        </svg>
+      </div>
+      <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl">
+        {% for code, name in theme_choices %}
+          <li>
+            <input 
+              type="radio" 
+              name="theme" 
+              {% if request.COOKIES.theme == code %}checked{% endif %} 
+              class="theme-controller btn btn-sm btn-block btn-ghost justify-start" 
+              aria-label="{{ name }}" 
+              value="{{ code }}" 
+              onchange="this.form.submit()" 
+            />
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </form>
 {% endblock %}
