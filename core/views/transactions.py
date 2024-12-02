@@ -19,8 +19,15 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
             field.widget.attrs.update({'class': 'form-control'})
         return form_class
     
+    # Update the bank account balance -- TODO: Isolate this logic to a service for less choke points
     def form_valid(self, form):
         form.instance.user = self.request.user
+        bank_account = form.cleaned_data.get('from_account')
+        if form.cleaned_data.get('transaction_type') == "INCOME":
+            bank_account.balance += form.cleaned_data.get('amount')
+        else:
+            bank_account.balance -= form.cleaned_data.get('amount')
+        bank_account.save() 
         return super().form_valid(form)
 
 
@@ -48,6 +55,18 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
     template_name = "transaction/update_transaction.html"
     fields = ["title", "description", "amount", "date", "transaction_type"]
     success_url = reverse_lazy("core:transaction_index")
+    
+    
+    # Update the bank account balance -- TODO: Isolate this logic to a service for less choke points
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        bank_account = form.cleaned_data.get('from_account')
+        if form.cleaned_data.get('transaction_type') == "INCOME":
+            bank_account.balance += form.cleaned_data.get('amount')
+        else:
+            bank_account.balance -= form.cleaned_data.get('amount')
+        bank_account.save() 
+        return super().form_valid(form)
 
 
 

@@ -29,31 +29,6 @@ class ListAllBankAccountsView(LoginRequiredMixin, ListView):
     model = BankAccount
     template_name = "account/list_bank_accounts.html"
     context_object_name = "bank_accounts"
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        
-        headers = {
-            "name": "Name",
-            "provider": "Provider",
-            "balance": "Balance",
-        }
-        
-        values = [
-            {
-                "name": bank_account.name,
-                "provider": bank_account.provider,
-                "balance": bank_account.balance,
-            }
-            for bank_account in context["bank_accounts"]
-        ]
-        
-        context.update({
-            "headers": headers,
-            "values": values,
-        })
-        
-        return context
 
 class BankAccountDetailView(LoginRequiredMixin, DetailView):
     login_url = "login"

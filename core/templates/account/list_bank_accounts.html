@@ -1,11 +1,30 @@
-{% extends "partials/layouts/base.html" %}
+{% extends "partials/layouts/base.html" %} 
+{% block title %} Create or Update Bank Account {% endblock %} 
 
-{% block title %} Create or Update Bank Account {% endblock %}
+
 
 {% block content %}
 
-{% for bank_account in bank_accounts %}
-  <p>{{ bank_account.name }} - {{ bank_account.provider }} - {{ bank_account.balance }}</p>
-{% endfor %}
+<table class="table">
+  <thead>
+    <td>Name</td>
+    <td>Provider</td>
+    <td>Balance</td>
+  </thead>
+  <tbody>
+  {% for bank_account in bank_accounts %}
+  <tr class="hover cursor-pointer" onclick="window.location='{% url "core:account_show" bank_account.id %}'">
+      <td>
+      {{ bank_account.name }} 
+      </td>
+      <td>
+      {{ bank_account.provider }} 
+      </td>
+      <td>
+      {{ bank_account.balance }}
+      </td>
+  {% endfor %}
+  </tbody>
+</table>
 
 {% endblock %}
