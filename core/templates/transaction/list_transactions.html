@@ -1,41 +1,47 @@
-{% extends "partials/layouts/base.html" %}
+{% extends "partials/layouts/base.html" %} 
 
-{% block title %} Transactions {% endblock %}
+{% block title %} Transactions {%endblock %} 
 
 {% block content %}
 
-<h1>Transactions</h1>
+<h1 class="text-2xl font-bold mb-4">Transactions</h1>
+{% if transactions %}
 <table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Amount</th>
-            <th>Date</th>
-            <th>Type</th>
-        </tr>
-    </thead>
-    <tbody>
-{% for transaction in transactions %}
-  <tr class="hover cursor-pointer" onclick="window.location='{% url 'core:transaction_show' transaction.id %}'">
-    <td>
-        {{ transaction.title }}
-    </td>
-    <td class='{% if transaction.transaction_type == "EXPENSE" %}text-red-500{% else %}text-green-500{% endif %}'>
-        {% if transaction.transaction_type == "EXPENSE" %}
-            -
-        {% else %}
-            +
-        {% endif %}
-        {{ transaction.amount }}
-    </td>
-    <td>
-        {{ transaction.date }}
-    </td>
-    <td>
-        {{ transaction.transaction_type|title }}
-    </td>
-  </tr>
-{% endfor %}
-    </tbody>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transaction in transactions %}
+    <tr
+      class="hover cursor-pointer"
+      onclick="window.location='{% url 'core:transaction_show' transaction.id %}'"
+    >
+      <td>{{ transaction.title }}</td>
+      <td
+        class="{% if transaction.transaction_type == 'EXPENSE' %}text-red-500{% else %}text-green-500{% endif %}"
+      >
+        {% if transaction.transaction_type == 'EXPENSE' %} - {% else %} + {%endif %} {{ transaction.amount }}
+      </td>
+      <td>{{ transaction.date }}</td>
+      <td>{{ transaction.transaction_type|title }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
+{% else %}
+<div class="flex flex-col items-center justify-center gap-4">
+  <p class="text-center text-lg font-bold">No transactions yet! Add one now!</p>
+  <div class="flex justify-center">
+    <a href="{% url 'core:transaction_new' %}" class="btn btn-primary btn-sm">
+        New Transaction
+    </a>
+  </div>
+</div>
+{% endif %} 
+
 {% endblock %}

@@ -1,43 +1,44 @@
 {% extends "partials/layouts/base.html" %}
 {% load widget_tweaks %}
-{% block title %} Create Transaction {% endblock %}
+{% block title %} {{ title }} {% endblock %}
 
 {% block content %}
 
-<form class="max-w-xl mx-auto" action="{% url 'core:transaction_new' %}" method="post">
+<h1 class="text-2xl font-bold mb-4">{{ title }}</h1>
+<form class="max-w-xl" action="{% url 'core:transaction_new' %}" method="post">
   {% csrf_token %}
   <div class="space-y-4">
-    <label class="label" for="title">
+    <label class="label flex flex-col items-start justify-start gap-2" for="title">
       <span class="label-text">Title</span>
       {{ form.title|add_class:"input input-bordered w-full" }}
     </label>
-    <label class="label" for="amount">
+    <label class="label flex flex-col items-start justify-start   gap-2" for="amount">
       <span class="label-text">Amount</span>
       {{ form.amount|add_class:"input input-bordered w-full" }}
     </label>
-    <label class="label" for="date">
+    <label class="label flex flex-col items-start justify-start gap-2" for="date">
       <span class="label-text">Date</span>
       {{ form.date|add_class:"input input-bordered w-full"|attr:"type:date" }}
     </label>
-    <label class="label" for="description">
+    <label class="label flex flex-col items-start justify-start gap-2" for="description">
       <span class="label-text">Description</span>
       {{ form.description|add_class:"input input-bordered w-full" }}
     </label>
-    <label class="label" for="transaction_type">
+    <label class="label flex flex-col items-start justify-start gap-2" for="transaction_type">
       <span class="label-text">Transaction Type</span>
       {{ form.transaction_type|add_class:"input input-bordered w-full" }}
     </label>
-    <label class="label" for="from_account">
+    <label class="label flex flex-col items-start justify-start gap-2" for="from_account">
       <span class="label-text">From Account</span>
       {{ form.from_account|add_class:"input input-bordered w-full" }}
     </label>
     {% if form.from_card %}
-    <label class="label" for="from_card">
+    <label class="label flex flex-col items-start justify-start gap-2" for="from_card">
       <span class="label-text">From Card</span>
       {{ form.from_card|add_class:"input input-bordered w-full" }}
     </label>
     {% endif %}
   </div>
-  <button class="btn btn-primary" type="submit">Save</button>
+  <button class="btn btn-primary mt-4" type="submit">Save</button>
 </form>
 {% endblock %}

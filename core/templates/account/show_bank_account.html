@@ -1,0 +1,23 @@
+{% extends "partials/layouts/base.html" %}
+
+{% block title %} Bank Account {% endblock %}
+
+{% block content %}
+
+<div class="card w-full bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title">{{ bank_account.name }}</h2>
+    <p><strong>Provider:</strong> {{ bank_account.provider }}</p>
+    <p><strong>Balance:</strong> {{ bank_account.balance }}</p>
+    <div class="card-actions justify-end">
+      <a class="btn btn-primary" href="{% url 'core:account_edit' bank_account.id %}">Edit</a>
+      <form action="{% url 'core:account_destroy' bank_account.id %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-error" type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

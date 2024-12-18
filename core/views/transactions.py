@@ -12,6 +12,11 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
     fields = ["title", "description", "amount", "date", "transaction_type", "from_account"]
     optional_fields = ["from_card"]
     success_url = reverse_lazy("core:transaction_index")
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Create Transaction"
+        return context
 
     def get_form_class(self):
         form_class = super().get_form_class()
@@ -52,10 +57,25 @@ class TransactionDetailView(LoginRequiredMixin, DetailView):
 class UpdateTransactionView(LoginRequiredMixin, UpdateView):
     login_url = "login"
     model = Transaction
-    template_name = "transaction/update_transaction.html"
-    fields = ["title", "description", "amount", "date", "transaction_type"]
+    template_name = "transaction/create_transaction.html"
+    fields = ["title", "description", "amount", "date", "transaction_type", "from_account"]
     success_url = reverse_lazy("core:transaction_index")
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Update Transaction"
+        return context
+
+    def get_initial(self):
+        initial = super().get_initial()
+        transaction = self.get_object()
+        initial['title'] = transaction.title
+        initial['description'] = transaction.description
+        initial['amount'] = transaction.amount
+        initial['date'] = transaction.date
+        initial['transaction_type'] = transaction.transaction_type
+        initial['from_account'] = transaction.from_account
+        return initial
     
     # Update the bank account balance -- TODO: Isolate this logic to a service for less choke points
     def form_valid(self, form):

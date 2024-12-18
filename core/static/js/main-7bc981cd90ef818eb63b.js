@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_globals_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/globals.scss */ \"./frontend/scss/globals.scss\");\n// import idSelector from \"./helpers/idSelector\";\n// import typewriter from \"./animations/typewriter\";\n\n// window.addEventListener(\"load\", () => {\n//   const helloElement = idSelector(\"typewriter\");\n//   if (helloElement) {\n//     const text = helloElement.textContent;\n//     helloElement.style.display = \"block\";\n//     helloElement.innerHTML = \"\";\n//     typewriter(helloElement, text, 10);\n//   }\n//   const switchThemeElement = idSelector(\"switch-theme\");\n//   if (switchThemeElement) {\n//     switchThemeElement.addEventListener(\"click\", () => {\n//       document.documentElement.classList.toggle(\"dark\");\n//     });\n//   }\n// });\n\n\n//# sourceURL=webpack://penny/./frontend/scripts/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_globals_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/globals.scss */ \"./frontend/scss/globals.scss\");\n\n\n\n//# sourceURL=webpack://penny/./frontend/scripts/index.ts?");
 
 /***/ })
 
