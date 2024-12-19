@@ -28,7 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "webpack_loader",
     "widget_tweaks",
@@ -53,6 +57,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "server.urls"
@@ -145,9 +150,12 @@ WEBPACK_LOADER = {
     "DEFAULT": {
         "BUNDLE_DIR_NAME": "",
         "CACHE": not DEBUG,
-        "STATS_FILE": os.path.join(BASE_DIR, "core/static/", "webpack-stats.json"),
+        "STATS_FILE": (
+            os.path.join(BASE_DIR, "core/static/", "webpack-stats.json")
+            if DEBUG
+            else os.path.join(STATIC_ROOT, "webpack-stats.json")
+        ),
         "POLL_INTERVAL": 0.1,
         "IGNORE": [r".+\.hot-update.js", r".+\.map"],
     }
 }
-

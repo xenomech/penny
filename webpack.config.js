@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const outputStaticDir = path.resolve(__dirname, "core/static");
 const entryScript = path.resolve(__dirname, "frontend/scripts/index.ts");
 const mode = process.env.NODE_ENV || "development";
-
+console.log(mode);
 module.exports = {
   mode: mode,
   entry: entryScript,

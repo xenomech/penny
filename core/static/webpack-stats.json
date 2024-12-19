@@ -1,71 +1,21 @@
 {
   "status": "done",
   "assets": {
-    "css/main-034170e719d6f9edf3b5.css": {
-      "name": "css/main-034170e719d6f9edf3b5.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-034170e719d6f9edf3b5.css",
+    "css/main-06337e68c12098680d81.css": {
+      "name": "css/main-06337e68c12098680d81.css",
+      "path": "/Users/xenomech/Devel/penny/core/static/css/main-06337e68c12098680d81.css",
       "publicPath": "auto"
     },
-    "css/main-05644f360d119886fb04.css": {
-      "name": "css/main-05644f360d119886fb04.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-05644f360d119886fb04.css",
-      "publicPath": "auto"
-    },
-    "css/main-4ce69519e680fb95b4eb.css": {
-      "name": "css/main-4ce69519e680fb95b4eb.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-4ce69519e680fb95b4eb.css",
-      "publicPath": "auto"
-    },
-    "css/main-651ba6a46301fd336cac.css": {
-      "name": "css/main-651ba6a46301fd336cac.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-651ba6a46301fd336cac.css",
-      "publicPath": "auto"
-    },
-    "css/main-967c41ac0e3196b9c09f.css": {
-      "name": "css/main-967c41ac0e3196b9c09f.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-967c41ac0e3196b9c09f.css",
-      "publicPath": "auto"
-    },
-    "css/main-9e68fb27b1f5d509746c.css": {
-      "name": "css/main-9e68fb27b1f5d509746c.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-9e68fb27b1f5d509746c.css",
-      "publicPath": "auto"
-    },
-    "css/main-b435c5d5f5021159702b.css": {
-      "name": "css/main-b435c5d5f5021159702b.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-b435c5d5f5021159702b.css",
-      "publicPath": "auto"
-    },
-    "css/main-b6aad03ed9ea0a2c9fd7.css": {
-      "name": "css/main-b6aad03ed9ea0a2c9fd7.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-b6aad03ed9ea0a2c9fd7.css",
-      "publicPath": "auto"
-    },
-    "css/main-b80ecee5eab5ccaa6429.css": {
-      "name": "css/main-b80ecee5eab5ccaa6429.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-b80ecee5eab5ccaa6429.css",
-      "publicPath": "auto"
-    },
-    "css/main-d352468b20b9b0df7389.css": {
-      "name": "css/main-d352468b20b9b0df7389.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-d352468b20b9b0df7389.css",
-      "publicPath": "auto"
-    },
-    "css/main-f1cb57f98fae4c017bac.css": {
-      "name": "css/main-f1cb57f98fae4c017bac.css",
-      "path": "/Users/xenomech/Devel/penny/core/static/css/main-f1cb57f98fae4c017bac.css",
-      "publicPath": "auto"
-    },
-    "js/main-7bc981cd90ef818eb63b.js": {
-      "name": "js/main-7bc981cd90ef818eb63b.js",
-      "path": "/Users/xenomech/Devel/penny/core/static/js/main-7bc981cd90ef818eb63b.js",
+    "js/main-31d6cfe0d16ae931b73c.js": {
+      "name": "js/main-31d6cfe0d16ae931b73c.js",
+      "path": "/Users/xenomech/Devel/penny/core/static/js/main-31d6cfe0d16ae931b73c.js",
       "publicPath": "auto"
     }
   },
   "chunks": {
     "main": [
-      "css/main-b435c5d5f5021159702b.css",
-      "js/main-7bc981cd90ef818eb63b.js"
+      "css/main-06337e68c12098680d81.css",
+      "js/main-31d6cfe0d16ae931b73c.js"
     ]
   },
   "publicPath": "auto"
